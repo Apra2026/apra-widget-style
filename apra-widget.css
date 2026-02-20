@@ -160,4 +160,13 @@ input[type="submit"]:hover{
     max-width:100% !important;
     display:block !important;
   }
+/* Убить внешнюю рамку, если она в нестандартном контейнере */
+.room-booking,
+.room-booking__wrap,
+.room-booking__inner,
+.start-widget,
+#start-widget{
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
