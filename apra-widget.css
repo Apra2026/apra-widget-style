@@ -3,46 +3,95 @@
   --apra-cream:#f5f3e6;
 }
 
-/* ---------- СБРОС внешних контейнеров ---------- */
+/* =======================================================
+   1) ЖЕСТКИЙ СБРОС РАМОК/ОБВОДОК/ТЕНЕЙ
+   ======================================================= */
+
+/* Часто “рамка” — это outline, а не border */
+#start-widget,
+#start-widget *,
+.start-widget,
+.start-widget *,
+.fd24-start-widget,
+.fd24-start-widget *,
+.fd24-widget,
+.fd24-widget *,
 .room-booking,
-.room-booking *,
-.b-start,
-.b-start__form,
-.b-start__fields,
-.b-start__row,
-.b-start__wrap{
-  box-shadow: none !important;
+.room-booking *{
   border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
 }
 
-/* Убираем ВСЕ рамки у контейнеров */
+/* Убираем border/outline у максимально широкого набора контейнеров */
+#start-widget,
+.start-widget,
+.fd24-start-widget,
+.fd24-widget,
 .room-booking,
+.room-booking__wrap,
+.room-booking__inner,
 .b-start,
+.b-start__wrap,
 .b-start__form,
 .b-start__fields,
-.b-start__row,
-.b-start__wrap{
+.b-start__row{
   border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
 }
 
-/* ---------- Контейнер виджета (БЕЗ фона) ---------- */
+/* На случай, если рамка нарисована псевдоэлементом */
+#start-widget::before,
+#start-widget::after,
+.b-start::before,
+.b-start::after,
+.room-booking::before,
+.room-booking::after{
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* =======================================================
+   2) ШИРИНА: виджет не должен “схлопываться” в узкий блок
+   ======================================================= */
+
+#start-widget{
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Популярные внутренние обёртки виджетов */
+.fd24-start-widget,
+.fd24-widget,
+.room-booking,
 .b-start{
-  background: transparent !important;
-  padding: 20px !important;
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
 }
 
-/* ---------- Лейблы ---------- */
+/* =======================================================
+   3) ВНУТРЕННОСТИ СТАРТОВОГО ВИДЖЕТА (то, что точно нужно)
+   ======================================================= */
+
+/* Контейнер виджета — без фона (фон ты даешь снаружи в Tilda) */
+.b-start{
+  background: transparent !important;
+  padding: 20px !important;
+}
+
+/* Лейблы */
 .b-start__field-label{
   color: var(--apra-cream) !important;
   font-size: 14px !important;
   font-weight: 500 !important;
   text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 
-/* ---------- Поля ---------- */
+/* Поля */
 .b-start__field,
 .b-start__field *{
   box-sizing: border-box !important;
@@ -53,18 +102,20 @@
 .b-select-ghost,
 .select2-container--default .select2-selection--single{
   background:#ffffff !important;
-  border:1px solid transparent !important; /* УБРАН цветной border */
+  border: 0 !important;              /* УБИРАЕМ рамку у полей */
+  outline: 0 !important;
   border-radius:0 !important;
   height:52px !important;
   max-width:100% !important;
   box-shadow:none !important;
 }
 
-/* hover */
+/* hover без эффектов */
 .b-start__field input:hover,
 .b-start__field select:hover,
 .select2-container--default .select2-selection--single:hover{
-  border:1px solid transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
 }
 
 /* select2 */
@@ -78,17 +129,19 @@
   line-height:1 !important;
 }
 .select2-dropdown{
-  border:0 !important; /* убран синий border */
+  border:0 !important;
+  outline:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
 
-/* ---------- Кнопка ---------- */
+/* Кнопка */
 .s-btn--primary,
 button[type="submit"],
 input[type="submit"]{
   background:var(--apra-blue) !important;
-  border:0 !important; /* убран border */
+  border:0 !important;
+  outline:0 !important;
   color:var(--apra-cream) !important;
   border-radius:0 !important;
   height:52px !important;
@@ -96,16 +149,16 @@ input[type="submit"]{
   box-shadow:none !important;
   transition:filter .15s ease-in-out !important;
 }
-
 .s-btn--primary:hover,
 button[type="submit"]:hover,
 input[type="submit"]:hover{
   filter:brightness(1.08) !important;
 }
 
-/* ---------- Календарь ---------- */
+/* Календарь */
 .ui-datepicker{
   border:0 !important;
+  outline:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
@@ -113,6 +166,7 @@ input[type="submit"]:hover{
   background:var(--apra-blue) !important;
   color:#ffffff !important;
   border:0 !important;
+  border-radius:0 !important;
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active{
@@ -122,15 +176,16 @@ input[type="submit"]:hover{
   font-weight:700 !important;
 }
 
-/* ---------- Попап гостей ---------- */
+/* Попап гостей */
 .l-popup-container--rooms{
   border:0 !important;
+  outline:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
 
 /* =======================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
+   4) МОБИЛКА
    ======================================================= */
 @media (max-width: 768px){
 
@@ -160,13 +215,4 @@ input[type="submit"]:hover{
     max-width:100% !important;
     display:block !important;
   }
-/* Убить внешнюю рамку, если она в нестандартном контейнере */
-.room-booking,
-.room-booking__wrap,
-.room-booking__inner,
-.start-widget,
-#start-widget{
-  border: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
 }
