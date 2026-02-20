@@ -1,11 +1,9 @@
-root{
+:root{
   --apra-blue:#031d56;
   --apra-cream:#f5f3e6;
-  --apra-black20:rgba(0,0,0,.2);
 }
 
-/* ---------- СБРОС внешних контейнеров (рамка/границы) ---------- */
-/* На случай, если рамка висит не на .b-start */
+/* ---------- СБРОС внешних контейнеров ---------- */
 .room-booking,
 .room-booking *,
 .b-start,
@@ -17,7 +15,7 @@ root{
   border-radius: 0 !important;
 }
 
-/* Убираем рамку у всех “верхних” контейнеров виджета */
+/* Убираем ВСЕ рамки у контейнеров */
 .room-booking,
 .b-start,
 .b-start__form,
@@ -27,9 +25,9 @@ root{
   border: 0 !important;
 }
 
-/* ---------- Контейнер плашки виджета ---------- */
+/* ---------- Контейнер виджета (БЕЗ фона) ---------- */
 .b-start{
-  background: var(--apra-black20) !important;
+  background: transparent !important;
   padding: 20px !important;
   width: 100% !important;
   max-width: 100% !important;
@@ -40,7 +38,6 @@ root{
 .b-start__field-label{
   color: var(--apra-cream) !important;
   font-size: 14px !important;
-  letter-spacing: 0 !important;
   font-weight: 500 !important;
   text-transform: none !important;
 }
@@ -56,22 +53,21 @@ root{
 .b-select-ghost,
 .select2-container--default .select2-selection--single{
   background:#ffffff !important;
-  border:1px solid var(--apra-blue) !important;
+  border:1px solid transparent !important; /* УБРАН цветной border */
   border-radius:0 !important;
   height:52px !important;
   max-width:100% !important;
   box-shadow:none !important;
 }
 
-/* hover без изменений */
+/* hover */
 .b-start__field input:hover,
 .b-start__field select:hover,
 .select2-container--default .select2-selection--single:hover{
-  background:#ffffff !important;
-  border:1px solid var(--apra-blue) !important;
+  border:1px solid transparent !important;
 }
 
-/* select2 выравнивание */
+/* select2 */
 .select2-container--default .select2-selection--single{
   display:flex !important;
   align-items:center !important;
@@ -82,18 +78,17 @@ root{
   line-height:1 !important;
 }
 .select2-dropdown{
+  border:0 !important; /* убран синий border */
   border-radius:0 !important;
-  border:1px solid var(--apra-blue) !important;
   box-shadow:none !important;
 }
 
 /* ---------- Кнопка ---------- */
-/* На всякий случай: и класс, и обычная кнопка submit */
 .s-btn--primary,
 button[type="submit"],
 input[type="submit"]{
   background:var(--apra-blue) !important;
-  border:1px solid var(--apra-blue) !important;
+  border:0 !important; /* убран border */
   color:var(--apra-cream) !important;
   border-radius:0 !important;
   height:52px !important;
@@ -101,6 +96,7 @@ input[type="submit"]{
   box-shadow:none !important;
   transition:filter .15s ease-in-out !important;
 }
+
 .s-btn--primary:hover,
 button[type="submit"]:hover,
 input[type="submit"]:hover{
@@ -109,7 +105,7 @@ input[type="submit"]:hover{
 
 /* ---------- Календарь ---------- */
 .ui-datepicker{
-  border:1px solid var(--apra-blue) !important;
+  border:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
@@ -117,7 +113,6 @@ input[type="submit"]:hover{
   background:var(--apra-blue) !important;
   color:#ffffff !important;
   border:0 !important;
-  border-radius:0 !important;
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active{
@@ -129,7 +124,7 @@ input[type="submit"]:hover{
 
 /* ---------- Попап гостей ---------- */
 .l-popup-container--rooms{
-  border:1px solid var(--apra-blue) !important;
+  border:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
@@ -139,7 +134,6 @@ input[type="submit"]:hover{
    ======================================================= */
 @media (max-width: 768px){
 
-  /* Виджет на всю ширину */
   .b-start,
   .b-start__form,
   .b-start__fields{
@@ -147,18 +141,15 @@ input[type="submit"]:hover{
     max-width:100% !important;
   }
 
-  /* В одну колонку */
   .b-start__row{
     display:block !important;
   }
 
-  /* Поля на 100% */
   .b-start__field{
     width:100% !important;
     max-width:100% !important;
   }
 
-  /* Кнопка строго на 100% */
   .s-btn--primary,
   button[type="submit"],
   input[type="submit"],
