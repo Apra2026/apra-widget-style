@@ -216,3 +216,25 @@ input[type="submit"]:hover{
     display:block !important;
   }
 }
+/* === EXPERIMENT: KILL ALL BORDERS/OUTLINES/SHADOWS INSIDE WIDGET === */
+#start-widget,
+#start-widget *{
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* На случай псевдоэлементов (часто рамки рисуют ими) */
+#start-widget *::before,
+#start-widget *::after{
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* На случай если рамка — это background-image/gradient */
+#start-widget *{
+  background-image: none !important;
+}
