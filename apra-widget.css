@@ -1,124 +1,91 @@
 :root{
   --apra-blue:#031d56;
   --apra-cream:#f5f3e6;
+  --apra-black20:rgba(0,0,0,.2);
+  --field-bg:#ffffff;
 }
 
 /* =======================================================
-   1) ЖЕСТКИЙ СБРОС РАМОК/ОБВОДОК/ТЕНЕЙ
+   БАЗА / СБРОС (чтобы не было "лишних" теней/скруглений)
    ======================================================= */
-
-/* Часто “рамка” — это outline, а не border */
-#start-widget,
-#start-widget *,
-.start-widget,
-.start-widget *,
-.fd24-start-widget,
-.fd24-start-widget *,
-.fd24-widget,
-.fd24-widget *,
-.room-booking,
-.room-booking *{
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  outline: 0 !important;
+*{
+  box-shadow:none !important;
+  border-radius:0 !important;
 }
 
-/* Убираем border/outline у максимально широкого набора контейнеров */
-#start-widget,
-.start-widget,
-.fd24-start-widget,
-.fd24-widget,
+/* Главные контейнеры виджета */
 .room-booking,
-.room-booking__wrap,
-.room-booking__inner,
 .b-start,
 .b-start__wrap,
 .b-start__form,
 .b-start__fields,
 .b-start__row{
-  border: 0 !important;
-  outline: 0 !important;
-  background: transparent !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
 }
 
-/* На случай, если рамка нарисована псевдоэлементом */
-#start-widget::before,
-#start-widget::after,
-.b-start::before,
-.b-start::after,
-.room-booking::before,
-.room-booking::after{
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
+/* Контейнер формы: фон НЕ задаём тут (фон делаем в Tilda overlay) */
+.b-start{
+  background:transparent !important;
+  border:0 !important;              /* у формы нет границы */
+  outline:0 !important;
+  box-shadow:none !important;
+  padding:20px !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
 }
 
 /* =======================================================
-   2) ШИРИНА: виджет не должен “схлопываться” в узкий блок
+   ЛЕЙБЛЫ
    ======================================================= */
-
-#start-widget{
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Популярные внутренние обёртки виджетов */
-.fd24-start-widget,
-.fd24-widget,
-.room-booking,
-.b-start{
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* =======================================================
-   3) ВНУТРЕННОСТИ СТАРТОВОГО ВИДЖЕТА (то, что точно нужно)
-   ======================================================= */
-
-/* Контейнер виджета — без фона (фон ты даешь снаружи в Tilda) */
-.b-start{
-  background: transparent !important;
-  padding: 20px !important;
-}
-
-/* Лейблы */
 .b-start__field-label{
-  color: var(--apra-cream) !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  text-transform: none !important;
-  letter-spacing: 0 !important;
+  color:var(--apra-cream) !important;
+  font-size:14px !important;
+  font-weight:500 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
 }
 
-/* Поля */
+/* =======================================================
+   ПОЛЯ (input/select/select2)
+   Desktop: 52px, Mobile: 48px
+   ======================================================= */
 .b-start__field,
 .b-start__field *{
-  box-sizing: border-box !important;
+  box-sizing:border-box !important;
 }
 
 .b-start__field input,
 .b-start__field select,
 .b-select-ghost,
 .select2-container--default .select2-selection--single{
-  background:#ffffff !important;
-  border: 0 !important;              /* УБИРАЕМ рамку у полей */
-  outline: 0 !important;
+  background:var(--field-bg) !important;
+  border:1px solid var(--apra-blue) !important; /* рамка полей */
+  outline:0 !important;
   border-radius:0 !important;
   height:52px !important;
-  max-width:100% !important;
   box-shadow:none !important;
+  max-width:100% !important;
 }
 
-/* hover без эффектов */
+/* hover на форму/поля — без изменений */
 .b-start__field input:hover,
 .b-start__field select:hover,
 .select2-container--default .select2-selection--single:hover{
-  border: 0 !important;
-  outline: 0 !important;
+  background:var(--field-bg) !important;
+  border:1px solid var(--apra-blue) !important;
 }
 
-/* select2 */
+/* focus: оставляем аккуратный (без glow) */
+.b-start__field input:focus,
+.b-start__field select:focus,
+.select2-container--default .select2-selection--single:focus{
+  outline:0 !important;
+  box-shadow:none !important;
+}
+
+/* Select2 выравнивание */
 .select2-container--default .select2-selection--single{
   display:flex !important;
   align-items:center !important;
@@ -129,36 +96,43 @@
   line-height:1 !important;
 }
 .select2-dropdown{
-  border:0 !important;
-  outline:0 !important;
   border-radius:0 !important;
+  border:1px solid var(--apra-blue) !important;
   box-shadow:none !important;
 }
 
-/* Кнопка */
+/* =======================================================
+   КНОПКА
+   ======================================================= */
 .s-btn--primary,
 button[type="submit"],
-input[type="submit"]{
+input[type="submit"],
+.b-start__btn,
+.b-start__submit,
+.b-start__button{
   background:var(--apra-blue) !important;
-  border:0 !important;
-  outline:0 !important;
+  border:1px solid var(--apra-blue) !important;
   color:var(--apra-cream) !important;
   border-radius:0 !important;
   height:52px !important;
-  font-weight:600 !important;
+  font-weight:600 !important; /* semi bold */
   box-shadow:none !important;
+  outline:0 !important;
   transition:filter .15s ease-in-out !important;
 }
+
+/* hover — чуть светлее фон */
 .s-btn--primary:hover,
 button[type="submit"]:hover,
 input[type="submit"]:hover{
   filter:brightness(1.08) !important;
 }
 
-/* Календарь */
+/* =======================================================
+   КАЛЕНДАРЬ (jQuery UI)
+   ======================================================= */
 .ui-datepicker{
-  border:0 !important;
-  outline:0 !important;
+  border:1px solid var(--apra-blue) !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
@@ -168,6 +142,8 @@ input[type="submit"]:hover{
   border:0 !important;
   border-radius:0 !important;
 }
+
+/* активная дата — только текст синим */
 .ui-state-active,
 .ui-widget-content .ui-state-active{
   background:transparent !important;
@@ -176,24 +152,26 @@ input[type="submit"]:hover{
   font-weight:700 !important;
 }
 
-/* Попап гостей */
+/* =======================================================
+   ПОПАП ВЫБОРА ГОСТЕЙ (rooms)
+   ======================================================= */
 .l-popup-container--rooms{
-  border:0 !important;
-  outline:0 !important;
+  border:1px solid var(--apra-blue) !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
 
 /* =======================================================
-   4) МОБИЛКА
+   МОБИЛЬНАЯ ВЕРСИЯ
+   - высота полей 48px
+   - отступы 20px по бокам (внутри виджета)
+   - кнопка на всю ширину формы
    ======================================================= */
-@media (max-width: 768px){
+@media (max-width:768px){
 
-  .b-start,
-  .b-start__form,
-  .b-start__fields{
-    width:100% !important;
-    max-width:100% !important;
+  /* внутренние паддинги для аккуратной адаптации */
+  .b-start{
+    padding:20px !important;
   }
 
   .b-start__row{
@@ -205,6 +183,13 @@ input[type="submit"]:hover{
     max-width:100% !important;
   }
 
+  .b-start__field input,
+  .b-start__field select,
+  .b-select-ghost,
+  .select2-container--default .select2-selection--single{
+    height:48px !important;
+  }
+
   .s-btn--primary,
   button[type="submit"],
   input[type="submit"],
@@ -214,27 +199,6 @@ input[type="submit"]:hover{
     width:100% !important;
     max-width:100% !important;
     display:block !important;
+    height:48px !important;
   }
-}
-/* === EXPERIMENT: KILL ALL BORDERS/OUTLINES/SHADOWS INSIDE WIDGET === */
-#start-widget,
-#start-widget *{
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  filter: none !important;
-}
-
-/* На случай псевдоэлементов (часто рамки рисуют ими) */
-#start-widget *::before,
-#start-widget *::after{
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  filter: none !important;
-}
-
-/* На случай если рамка — это background-image/gradient */
-#start-widget *{
-  background-image: none !important;
 }
