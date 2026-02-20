@@ -1,48 +1,47 @@
-/* =========================
-   APRA HOTEL — OnlineWidget 2.0
-   startWidget + bookWidget
-   BG of widget: TRANSPARENT (overlay handled in Tilda T123)
-   ========================= */
 
-/* ---- 0) Layout: center + max width on desktop ---- */
+/* ---------- Layout / containers ---------- */
 .b-start,
-.room-booking {
+.room-booking,
+.fd24-frame-container {
   background: transparent !important;
   border: none !important;
-  box-shadow: none !important;
   border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
-.b-start {
+/* Centered limited width on desktop */
+.b-start,
+.room-booking {
   max-width: 1200px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* If internal wrappers try to paint a white panel */
-.b-start__content,
-.b-start__inner,
-.room-booking__content,
-.room-booking__inner {
+/* Remove any “card” look if present */
+.b-start__field,
+.room-booking__field,
+.b-start__container,
+.room-booking__container {
   background: transparent !important;
   border: none !important;
-  box-shadow: none !important;
   border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
-/* ---- 1) Labels ---- */
+/* ---------- Labels ---------- */
 .b-start__field-label,
-.room-booking__field-label {
+.room-booking__field-label,
+label {
   color: #f5f3e6 !important;
   font-size: 14px !important;
   letter-spacing: 0 !important;
   font-weight: 400 !important;
 }
 
-/* ---- 2) Inputs / Selects (incl. Select2) ---- */
+/* ---------- Inputs / selects ---------- */
 .b-start input,
-.b-start select,
 .room-booking input,
+.b-start select,
 .room-booking select,
 .b-select-ghost,
 .select2-container .select2-selection--single {
@@ -51,14 +50,36 @@
   border-radius: 0 !important;
   box-shadow: none !important;
   outline: none !important;
-
   color: #031d56 !important;
 }
 
-/* heights desktop */
+/* No visual changes on hover/focus (except keeping border) */
+.b-start input:hover,
+.room-booking input:hover,
+.b-start select:hover,
+.room-booking select:hover,
+.b-select-ghost:hover,
+.select2-container .select2-selection--single:hover,
+.b-start input:focus,
+.room-booking input:focus,
+.b-start select:focus,
+.room-booking select:focus,
+.b-select-ghost:focus,
+.select2-container .select2-selection--single:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Placeholder */
+.b-start input::placeholder,
+.room-booking input::placeholder {
+  color: rgba(3, 29, 86, 0.45) !important; /* “серый” в логике бренда */
+}
+
+/* Heights: desktop default */
 .b-start input,
-.b-start select,
 .room-booking input,
+.b-start select,
 .room-booking select,
 .b-select-ghost,
 .select2-container .select2-selection--single,
@@ -69,65 +90,28 @@
   line-height: 52px !important;
 }
 
-/* paddings */
-.b-start input,
-.b-start select,
-.room-booking input,
-.room-booking select,
-.b-select-ghost {
-  padding-left: 14px !important;
-  padding-right: 14px !important;
-}
-
-/* placeholder color */
-.b-start input::placeholder,
-.room-booking input::placeholder {
-  color: #9aa3b2 !important; /* neutral grey */
-}
-
-/* remove hover/focus effects */
-.b-start input:hover,
-.b-start select:hover,
-.room-booking input:hover,
-.room-booking select:hover,
-.b-select-ghost:hover,
-.select2-container .select2-selection--single:hover,
-.b-start input:focus,
-.b-start select:focus,
-.room-booking input:focus,
-.room-booking select:focus,
-.b-select-ghost:focus,
-.select2-container .select2-selection--single:focus {
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-/* Select2 text alignment */
+/* Select2 vertical alignment */
 .select2-container .select2-selection--single .select2-selection__rendered {
-  color: #031d56 !important;
   line-height: 52px !important;
   padding-left: 14px !important;
-  padding-right: 44px !important;
+  padding-right: 40px !important;
+  color: #031d56 !important;
 }
 .select2-container .select2-selection--single .select2-selection__arrow {
   height: 52px !important;
 }
 
-/* ---- 3) Icons & dropdown arrows ---- */
+/* Icons + dropdown arrows (if SVG/font icons used) */
 .icon-calendar,
 .icon-guest,
-.b-start .icon,
-.room-booking .icon {
+.select2-selection__arrow b,
+svg,
+i {
   color: #031d56 !important;
   fill: #031d56 !important;
-  opacity: 1 !important;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-  border-color: #031d56 transparent transparent transparent !important;
-}
-
-/* ---- 4) Primary button ---- */
+/* ---------- CTA button ---------- */
 .s-btn--primary,
 .s-btn {
   background: #031d56 !important;
@@ -140,16 +124,17 @@
   text-transform: uppercase !important;
 }
 
+/* Hover чуть светлее */
 .s-btn--primary:hover,
 .s-btn:hover {
   background: #0a2a78 !important;
 }
 
-/* ---- 5) Calendar (jQuery UI datepicker) ---- */
+/* ---------- Calendar (jQuery UI typical) ---------- */
 .ui-datepicker {
-  border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  border: none !important;
 }
 
 .ui-datepicker-header {
@@ -159,7 +144,7 @@
   color: #f5f3e6 !important;
 }
 
-/* active/selected day: text #031d56 + 1px border */
+/* Active date: text #031d56 + 1px border */
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
@@ -170,93 +155,48 @@
   box-shadow: none !important;
 }
 
-/* keep other days readable */
-.ui-datepicker td a {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-
-/* ---- 6) Popups / dropdown panels ---- */
+/* Guests / dropdown popups */
 .select2-dropdown,
-.select2-container--open .select2-dropdown,
-.fd24-frame-container,
-.b-popup,
-.b-popover {
+.select2-container--open .select2-dropdown {
   background: #ffffff !important;
-  border: none !important;
+  border: 1px solid #031d56 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
 
-/* If widget has +/- controls or add-room buttons */
-.s-btn--secondary,
-.b-counter__btn,
-.b-add-room__btn {
-  background: #031d56 !important;
-  color: #f5f3e6 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-.s-btn--secondary:hover,
-.b-counter__btn:hover,
-.b-add-room__btn:hover {
-  background: #0a2a78 !important;
-}
-
-/* ---- 7) Mobile ---- */
-@media (max-width: 500px) {
-  .b-start {
+/* ---------- Mobile ---------- */
+@media screen and (max-width: 500px) {
+  /* Side padding 20px */
+  .b-start,
+  .room-booking {
     padding-left: 20px !important;
     padding-right: 20px !important;
-    max-width: 100% !important;
   }
 
+  /* Heights: mobile 42px */
   .b-start input,
-  .b-start select,
   .room-booking input,
+  .b-start select,
   .room-booking select,
   .b-select-ghost,
   .select2-container .select2-selection--single,
   .s-btn--primary,
   .s-btn {
-    height: 48px !important;
-    min-height: 48px !important;
-    line-height: 48px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    line-height: 42px !important;
   }
 
   .select2-container .select2-selection--single .select2-selection__rendered {
-    line-height: 48px !important;
+    line-height: 42px !important;
   }
   .select2-container .select2-selection--single .select2-selection__arrow {
-    height: 48px !important;
+    height: 42px !important;
   }
 
+  /* CTA full width */
   .s-btn--primary,
   .s-btn {
     width: 100% !important;
   }
-}
-/* --- REMOVE GREY BACKGROUND PANEL COMPLETELY --- */
-
-.b-start,
-.b-start__content,
-.b-start__inner,
-.b-start__wrapper,
-.room-booking,
-.room-booking__content,
-.room-booking__inner,
-.room-booking__wrapper {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* если виджет рендерит дополнительную панель */
-.fd24-frame-container,
-.fd24-container,
-.b-widget-container {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
 }
