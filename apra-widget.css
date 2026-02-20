@@ -1,208 +1,188 @@
-/* =========================
-   APRA — OnlineWidget 2.0
-   Transparent widget background (overlay handled outside)
-   ========================= */
+:root{
+  --apra-blue:#031d56;
+  --apra-cream:#f5f3e6;
+  --field-bg:#ffffff;
+}
 
-/* 1) Main containers */
+/* =======================================================
+   ОСНОВНОЙ КОНТЕЙНЕР ВИДЖЕТА
+   ======================================================= */
+
 .room-booking,
-.b-start {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+.b-start{
+  background:#f5f3e6 !important;
+  border:0 !important;
+  outline:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+  padding:20px !important;
 }
 
-/* Sometimes internal wrappers add background */
-.room-booking * {
-  border-radius: 0 !important;
+/* Убираем любые внешние рамки/тени */
+.room-booking *,
+.b-start *{
+  border-radius:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
 }
 
-/* 2) Fields wrapper */
-.b-start__field {
-  box-shadow: none !important;
+/* =======================================================
+   ЛЕЙБЛЫ
+   ======================================================= */
+
+.b-start__field-label{
+  color:#f5f3e6 !important;
+  font-size:14px !important;
+  font-weight:500 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
 }
 
-/* Labels */
-.b-start__field-label {
-  color: #f5f3e6 !important;
-  font-size: 14px !important;
-  letter-spacing: 0 !important;
-  font-weight: 400 !important;
+/* =======================================================
+   ПОЛЯ ВВОДА
+   ======================================================= */
+
+.b-start__field,
+.b-start__field *{
+  box-sizing:border-box !important;
 }
 
-/* 3) Inputs / selects base */
+.b-start__field input,
+.b-start__field select,
 .b-select-ghost,
-.select2-container .select2-selection--single,
-.b-start input,
-.b-start select {
-  background: #ffffff !important;
-  border: 0 !important;              /* no borders */
-  outline: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  color: #111111 !important;
+.select2-container--default .select2-selection--single{
+  background:#ffffff !important;
+  border:1px solid #031d56 !important;
+  border-radius:0 !important;
+  height:52px !important;
+  max-width:100% !important;
+  box-shadow:none !important;
+  outline:0 !important;
 }
 
-/* Disable hover “effects” on fields */
-.b-select-ghost:hover,
-.select2-container .select2-selection--single:hover,
-.b-start input:hover,
-.b-start select:hover {
-  box-shadow: none !important;
-  filter: none !important;
+/* hover — без изменений */
+.b-start__field input:hover,
+.b-start__field select:hover,
+.select2-container--default .select2-selection--single:hover{
+  background:#ffffff !important;
+  border:1px solid #031d56 !important;
 }
 
-/* Disable focus “effects” too */
-.b-select-ghost:focus,
-.select2-container .select2-selection--single:focus,
-.b-start input:focus,
-.b-start select:focus {
-  box-shadow: none !important;
-  outline: none !important;
+/* select2 выравнивание */
+.select2-container--default .select2-selection--single{
+  display:flex !important;
+  align-items:center !important;
+  padding:0 14px !important;
+}
+.select2-container--default .select2-selection__rendered{
+  padding:0 !important;
+  line-height:1 !important;
+}
+.select2-dropdown{
+  border:1px solid #031d56 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
 }
 
-/* Field heights (desktop default) */
-.b-select-ghost,
-.select2-container .select2-selection--single,
-.b-start input,
-.b-start select,
-.s-btn--primary {
-  height: 52px !important;
-  min-height: 52px !important;
-  line-height: 52px !important;
+/* =======================================================
+   КНОПКА
+   ======================================================= */
+
+.s-btn--primary,
+button[type="submit"],
+input[type="submit"],
+.b-start__btn,
+.b-start__submit,
+.b-start__button{
+  background:#031d56 !important;
+  border:1px solid #031d56 !important;
+  color:#f5f3e6 !important;
+  border-radius:0 !important;
+  height:52px !important;
+  font-weight:600 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+  transition:filter .15s ease-in-out !important;
 }
 
-/* Make Select2 text vertically centered */
-.select2-container .select2-selection--single .select2-selection__rendered {
-  line-height: 52px !important;
-  padding-left: 14px !important;
-  padding-right: 40px !important;
-}
-.select2-container .select2-selection--single .select2-selection__arrow {
-  height: 52px !important;
-}
-
-/* Optional: icons (calendar/guest) keep subtle, no extra styling changes */
-.icon-calendar,
-.icon-guest {
-  opacity: 0.8;
-}
-
-/* 4) Primary CTA button */
-.s-btn,
-.s-btn--primary {
-  background: #031d56 !important;
-  color: #f5f3e6 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  font-weight: 600 !important; /* semi-bold */
-  letter-spacing: 0 !important;
-  text-transform: none !important;
-}
-
-/* Hover чуть светлее */
+/* hover — немного светлее */
 .s-btn--primary:hover,
-.s-btn:hover {
-  background: #0a2a78 !important; /* слегка светлее, без “прыжков” */
+button[type="submit"]:hover,
+input[type="submit"]:hover{
+  filter:brightness(1.08) !important;
 }
 
-/* 5) Calendar popup (jQuery UI) */
-.ui-datepicker {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  border: none !important;
+/* =======================================================
+   КАЛЕНДАРЬ
+   ======================================================= */
+
+.ui-datepicker{
+  border:1px solid #031d56 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
 }
 
-.ui-datepicker-header {
-  background: #031d56 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  color: #f5f3e6 !important;
+.ui-datepicker-header{
+  background:#031d56 !important;
+  color:#ffffff !important;
+  border:0 !important;
+  border-radius:0 !important;
 }
 
-/* Selected/active date: text color #031d56, без заливки */
+/* активная дата — просто текст */
 .ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active {
-  background: transparent !important;
-  border: 1px solid #031d56 !important;
-  color: #031d56 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+.ui-widget-content .ui-state-active{
+  background:transparent !important;
+  border:0 !important;
+  color:#031d56 !important;
+  font-weight:700 !important;
 }
 
-/* Highlighted date (if used by widget) — держим в той же логике */
-.ui-state-highlight,
-.ui-widget-content .ui-state-highlight,
-.ui-widget-header .ui-state-highlight {
-  background: transparent !important;
-  border: 1px solid rgba(3, 29, 86, 0.35) !important;
-  color: #031d56 !important;
-  border-radius: 0 !important;
+/* =======================================================
+   ПОПАП ГОСТЕЙ
+   ======================================================= */
+
+.l-popup-container--rooms{
+  border:1px solid #031d56 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
 }
 
-/* 6) Guests popup / dropdowns (Select2 + widget overlays) */
-.select2-dropdown,
-.select2-container--open .select2-dropdown {
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
+/* =======================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ======================================================= */
 
-/* Popup/overlay containers inside widget (we keep them neutral; your T123 overlay is separate) */
-.fd24-frame-container {
-  border-radius: 0 !important;
-}
+@media (max-width:768px){
 
-/* Buttons inside guest/room controls:
-   make all secondary buttons same brand blue */
-.s-btn--secondary {
-  background: #031d56 !important;
-  color: #f5f3e6 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-.s-btn--secondary:hover {
-  background: #0a2a78 !important;
-}
-
-/* 7) Responsive: mobile tweaks */
-@media screen and (max-width: 500px) {
-  /* Side padding 20px */
-  .b-start {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+  .b-start{
+    padding:20px !important;
   }
 
-  /* Field + button heights */
-  .b-select-ghost,
-  .select2-container .select2-selection--single,
-  .b-start input,
-  .b-start select,
-  .s-btn--primary {
-    height: 48px !important;
-    min-height: 48px !important;
-    line-height: 48px !important;
+  .b-start__row{
+    display:block !important;
   }
 
-  .select2-container .select2-selection--single .select2-selection__rendered {
-    line-height: 48px !important;
-  }
-  .select2-container .select2-selection--single .select2-selection__arrow {
-    height: 48px !important;
+  .b-start__field{
+    width:100% !important;
   }
 
-  /* Button full width */
-  .s-btn--primary {
-    width: 100% !important;
-    font-size: 14px !important;
+  .b-start__field input,
+  .b-start__field select,
+  .select2-container--default .select2-selection--single{
+    height:48px !important;
   }
 
-  /* Ensure fields stack nicely */
-  .b-start__field {
-    width: 100% !important;
-    min-width: 100% !important;
+  .s-btn--primary,
+  button[type="submit"],
+  input[type="submit"],
+  .b-start__btn,
+  .b-start__submit,
+  .b-start__button{
+    width:100% !important;
+    display:block !important;
+    height:48px !important;
   }
 }
