@@ -237,3 +237,26 @@
     width: 100% !important;
   }
 }
+/* --- REMOVE GREY BACKGROUND PANEL COMPLETELY --- */
+
+.b-start,
+.b-start__content,
+.b-start__inner,
+.b-start__wrapper,
+.room-booking,
+.room-booking__content,
+.room-booking__inner,
+.room-booking__wrapper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* если виджет рендерит дополнительную панель */
+.fd24-frame-container,
+.fd24-container,
+.b-widget-container {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
