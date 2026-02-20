@@ -1,0 +1,87 @@
+/* ===== APRA HOTEL — Shelter Widget Style ===== */
+
+/* --- Общий контейнер --- */
+.fd24-start-widget,
+.fd24-widget {
+    font-weight: 500;
+}
+
+/* --- Фон формы (если применяется внутри iframe) --- */
+.fd24-start-widget__form {
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* --- Поля ввода --- */
+.fd24-start-widget input,
+.fd24-start-widget select {
+    background-color: #ffffff !important;
+    border: 1px solid #031d56 !important;
+    height: 52px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+}
+
+/* Hover на поля — без изменений */
+.fd24-start-widget input:hover,
+.fd24-start-widget select:hover {
+    background-color: #ffffff !important;
+    border: 1px solid #031d56 !important;
+}
+
+/* --- Лейблы --- */
+.fd24-start-widget label {
+    color: #f5f3e6 !important;
+    font-size: 14px !important;
+    letter-spacing: 0 !important;
+    font-weight: 500 !important;
+}
+
+/* --- Кнопка --- */
+.fd24-start-widget button,
+.fd24-start-widget .fd24-btn-primary {
+    background-color: #031d56 !important;
+    color: #f5f3e6 !important;
+    height: 52px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+}
+
+/* Hover кнопки — чуть светлее */
+.fd24-start-widget button:hover,
+.fd24-start-widget .fd24-btn-primary:hover {
+    background-color: #0a2a78 !important;
+}
+
+/* --- Календарь --- */
+.fd24-calendar__header {
+    background-color: #031d56 !important;
+    color: #ffffff !important;
+}
+
+.fd24-calendar__day--selected {
+    color: #031d56 !important;
+    background: transparent !important;
+}
+
+.fd24-calendar {
+    border-radius: 0 !important;
+}
+
+/* --- Попап гостей --- */
+.fd24-guest-popup {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* --- Мобильные отступы --- */
+@media (max-width: 768px) {
+    .fd24-start-widget {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
