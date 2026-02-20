@@ -3,9 +3,9 @@
 .b-start,
 .room-booking,
 .fd24-frame-container {
-  background: transparent !important;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   border: none !important;
-  border-radius: 0 !important;
+  border-radius: 8px;
   box-shadow: none !important;
 }
 
