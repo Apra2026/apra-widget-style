@@ -45,8 +45,8 @@ label {
 .room-booking select,
 .b-select-ghost,
 .select2-container .select2-selection--single {
-  background: #ffffff !important;
-  border: 1px solid #031d56 !important;
+  background: #f5f3e6 !important;
+  border: 1px solid #f5f3e6 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   outline: none !important;
