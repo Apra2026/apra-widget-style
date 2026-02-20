@@ -1,21 +1,42 @@
-:root{
+root{
   --apra-blue:#031d56;
   --apra-cream:#f5f3e6;
   --apra-black20:rgba(0,0,0,.2);
 }
 
-/* ---------------- Общий контейнер ---------------- */
-
-.b-start{
-  background: var(--apra-black20) !important;
-  border: 0 !important;                 /* Убрали общую рамку */
-  border-radius: 0 !important;
+/* ---------- СБРОС внешних контейнеров (рамка/границы) ---------- */
+/* На случай, если рамка висит не на .b-start */
+.room-booking,
+.room-booking *,
+.b-start,
+.b-start__form,
+.b-start__fields,
+.b-start__row,
+.b-start__wrap{
   box-shadow: none !important;
-  padding: 20px !important;
+  border-radius: 0 !important;
 }
 
-/* ---------------- Лейблы ---------------- */
+/* Убираем рамку у всех “верхних” контейнеров виджета */
+.room-booking,
+.b-start,
+.b-start__form,
+.b-start__fields,
+.b-start__row,
+.b-start__wrap{
+  border: 0 !important;
+}
 
+/* ---------- Контейнер плашки виджета ---------- */
+.b-start{
+  background: var(--apra-black20) !important;
+  padding: 20px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ---------- Лейблы ---------- */
 .b-start__field-label{
   color: var(--apra-cream) !important;
   font-size: 14px !important;
@@ -24,7 +45,11 @@
   text-transform: none !important;
 }
 
-/* ---------------- Поля ---------------- */
+/* ---------- Поля ---------- */
+.b-start__field,
+.b-start__field *{
+  box-sizing: border-box !important;
+}
 
 .b-start__field input,
 .b-start__field select,
@@ -34,10 +59,11 @@
   border:1px solid var(--apra-blue) !important;
   border-radius:0 !important;
   height:52px !important;
+  max-width:100% !important;
   box-shadow:none !important;
 }
 
-/* Убираем hover-эффекты */
+/* hover без изменений */
 .b-start__field input:hover,
 .b-start__field select:hover,
 .select2-container--default .select2-selection--single:hover{
@@ -45,28 +71,27 @@
   border:1px solid var(--apra-blue) !important;
 }
 
-/* Выравнивание текста в select */
+/* select2 выравнивание */
 .select2-container--default .select2-selection--single{
   display:flex !important;
   align-items:center !important;
   padding:0 14px !important;
 }
-
 .select2-container--default .select2-selection--single .select2-selection__rendered{
   padding:0 !important;
   line-height:1 !important;
 }
-
-/* Dropdown select */
 .select2-dropdown{
   border-radius:0 !important;
   border:1px solid var(--apra-blue) !important;
   box-shadow:none !important;
 }
 
-/* ---------------- Кнопка ---------------- */
-
-.s-btn--primary{
+/* ---------- Кнопка ---------- */
+/* На всякий случай: и класс, и обычная кнопка submit */
+.s-btn--primary,
+button[type="submit"],
+input[type="submit"]{
   background:var(--apra-blue) !important;
   border:1px solid var(--apra-blue) !important;
   color:var(--apra-cream) !important;
@@ -76,28 +101,24 @@
   box-shadow:none !important;
   transition:filter .15s ease-in-out !important;
 }
-
-/* Hover — чуть светлее */
-.s-btn--primary:hover{
+.s-btn--primary:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover{
   filter:brightness(1.08) !important;
 }
 
-/* ---------------- Календарь ---------------- */
-
+/* ---------- Календарь ---------- */
 .ui-datepicker{
   border:1px solid var(--apra-blue) !important;
   border-radius:0 !important;
   box-shadow:none !important;
 }
-
 .ui-datepicker-header{
   background:var(--apra-blue) !important;
   color:#ffffff !important;
   border:0 !important;
   border-radius:0 !important;
 }
-
-/* Активная дата — без заливки */
 .ui-state-active,
 .ui-widget-content .ui-state-active{
   background:transparent !important;
@@ -106,8 +127,7 @@
   font-weight:700 !important;
 }
 
-/* ---------------- Попап гостей ---------------- */
-
+/* ---------- Попап гостей ---------- */
 .l-popup-container--rooms{
   border:1px solid var(--apra-blue) !important;
   border-radius:0 !important;
@@ -117,35 +137,36 @@
 /* =======================================================
    МОБИЛЬНАЯ ВЕРСИЯ
    ======================================================= */
-
 @media (max-width: 768px){
 
-  /* Все элементы в колонку */
+  /* Виджет на всю ширину */
+  .b-start,
   .b-start__form,
-  .b-start__fields,
+  .b-start__fields{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  /* В одну колонку */
   .b-start__row{
     display:block !important;
   }
 
-  /* Поля на всю ширину */
-  .b-start__field,
-  .b-start__field *{
+  /* Поля на 100% */
+  .b-start__field{
     width:100% !important;
     max-width:100% !important;
-    box-sizing:border-box !important;
   }
 
-  /* Кнопка на всю ширину */
-  .s-btn--primary{
-    width:100% !important;
-    display:block !important;
-  }
-
-  /* Контейнер кнопки */
+  /* Кнопка строго на 100% */
+  .s-btn--primary,
+  button[type="submit"],
+  input[type="submit"],
   .b-start__btn,
   .b-start__submit,
   .b-start__button{
     width:100% !important;
     max-width:100% !important;
+    display:block !important;
   }
 }
