@@ -173,3 +173,70 @@
 .b-start__field *{
   text-transform: none !important;
 }
+/* =========================================================
+   BOOK WIDGET (room-booking) — fields + buttons
+   цель: поля белые, border 1px apra-blue, тексты/кнопки белые
+   ========================================================= */
+
+/* 1) Базовый цвет текста в bookWidget */
+.room-booking,
+.room-booking *{
+  color: var(--apra-blue) !important;
+}
+
+/* 2) Поля / селекты / select2 — белый фон + синяя рамка */
+.room-booking input,
+.room-booking select,
+.room-booking textarea,
+.room-booking .b-select-ghost,
+.room-booking .select2-container .select2-selection--single,
+.room-booking .select2-container .select2-selection--multiple{
+  background: var(--apra-field-bg) !important;         /* #FFFFFF */
+  border: 1px solid var(--apra-blue) !important;       /* #031D56 */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: var(--apra-blue) !important;
+}
+
+/* Текст внутри select2 */
+.room-booking .select2-container .select2-selection__rendered{
+  color: var(--apra-blue) !important;
+}
+
+/* Placeholder */
+.room-booking input::placeholder,
+.room-booking textarea::placeholder{
+  color: var(--apra-gray) !important;
+}
+
+/* 3) Кнопки: фон apra-blue, текст белый */
+.room-booking button,
+.room-booking .s-btn,
+.room-booking .s-btn--primary,
+.room-booking a.s-btn,
+.room-booking a.s-btn--primary,
+.room-booking input[type="submit"],
+.room-booking button[type="submit"]{
+  background: var(--apra-blue) !important;             /* #031D56 */
+  border: 1px solid var(--apra-blue) !important;
+  color: var(--apra-field-bg) !important;              /* #FFFFFF */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* На всякий — если внутри кнопок есть span/svg и они перекрашиваются не полностью */
+.room-booking button *,
+.room-booking .s-btn *,
+.room-booking .s-btn--primary *{
+  color: var(--apra-field-bg) !important;              /* #FFFFFF */
+  fill: var(--apra-field-bg) !important;
+}
+
+/* Hover */
+.room-booking button:hover,
+.room-booking .s-btn:hover,
+.room-booking .s-btn--primary:hover{
+  background: var(--apra-hover) !important;
+  border-color: var(--apra-hover) !important;
+}
