@@ -1,8 +1,4 @@
-/* =========================================================
-   APRA HOTEL — OnlineWidget 2.0
-   Style: Premium / Minimal / Strict / No Radius / No Shadow
-   IMPORTANT: This CSS is loaded INSIDE the widget iframe.
-   ========================================================= */
+.b-start { outline: 6px solid red !important; }
 
 :root{
   --apra-blue:#031D56;
