@@ -43,7 +43,7 @@
   font-size: 14px !important;
   font-weight: 400 !important;
   letter-spacing: 0.02em !important;
-  text-transform: none !important;
+  text-transform: capitalize !important;
 }
 
 /* ================= FIELDS ================= */
