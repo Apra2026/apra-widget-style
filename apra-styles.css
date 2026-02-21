@@ -1,105 +1,104 @@
-.b-start { outline: 6px solid red !important; }
+/* =========================================================
+   APRA HOTEL — OnlineWidget 2.0
+   Minimal / Stable / No global reset
+   ========================================================= */
 
 :root{
   --apra-blue:#031D56;
   --apra-cream:#F5F3E6;
   --apra-hover:#1B439B;
+
   --apra-field-bg:#FFFFFF;
-
   --apra-gray:#8C8C8C;
-  --apra-active-bg:#E6E6E6;
-
-  --apra-radius:0px;
-  --apra-border:1px solid var(--apra-blue);
 
   --apra-field-h-desktop:52px;
-  --apra-field-h-mobile:50px;
-
-  --apra-pad-desktop:20px;
-  --apra-pad-mobile:16px;
-
-  --apra-transition:0.18s ease;
+  --apra-field-h-mobile:42px;
 }
 
-/* =========================================================
-   GLOBAL RESET (inside iframe)
-   ========================================================= */
-
-*, *::before, *::after{
-  border-radius: var(--apra-radius) !important;
-  box-shadow: none !important;
-}
-
-/* =========================================================
-   START WIDGET: CONTAINER
-   ========================================================= */
+/* ================= STARTWIDGET CONTAINERS ================= */
 
 .b-start{
   background: transparent !important;
   border: none !important;
-  padding: var(--apra-pad-desktop) !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* =========================================================
-   START WIDGET: FIELDS (dates / guests)
-   Note: in your HTML fields are .b-select-ghost, not inputs.
-   ========================================================= */
-
-.b-start__field{
-  min-height: var(--apra-field-h-desktop) !important;
+.b-start__field,
+.b-start__container{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
-/* Clickable "ghost" controls (date/guests) */
-.b-select-ghost{
-  background: var(--apra-field-bg) !important;
-  border: var(--apra-border) !important;
-  color: var(--apra-blue) !important;
-  height: var(--apra-field-h-desktop) !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 0 16px !important;
-  transition: border-color var(--apra-transition), background var(--apra-transition) !important;
-}
-
-/* Text inside the ghost control */
-.b-select-ghost-content{
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: var(--apra-blue) !important;
-}
-
-/* When empty (often they add a placeholder class; best-effort) */
-.b-select-ghost-content:empty,
-.b-select-ghost-content.is-empty,
-.b-select-ghost.is-empty .b-select-ghost-content{
-  color: var(--apra-gray) !important;
-}
-
-/* =========================================================
-   LABELS
-   ========================================================= */
+/* ================= LABELS ================= */
 
 .b-start__field-label{
   color: var(--apra-cream) !important;
   font-size: 16px !important;
   font-weight: 400 !important;
-  text-transform: uppercase !important;
   letter-spacing: 0.02em !important;
-  margin-bottom: 6px !important;
+  text-transform: uppercase !important;
 }
 
-/* =========================================================
-   PRIMARY BUTTON
-   ========================================================= */
+/* ================= FIELDS ================= */
 
-.s-btn--primary,
-button.s-btn--primary,
-button[type="submit"].s-btn--primary{
+.b-select-ghost{
+  background: var(--apra-field-bg) !important;
+  border: 1px solid var(--apra-blue) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--apra-blue) !important;
+
+  height: var(--apra-field-h-desktop) !important;
+  min-height: var(--apra-field-h-desktop) !important;
+  line-height: var(--apra-field-h-desktop) !important;
+
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 16px !important;
+}
+
+.b-select-ghost-content{
+  color: var(--apra-blue) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+.b-select-ghost-content:empty{
+  color: var(--apra-gray) !important;
+}
+
+/* ================= ICONS ================= */
+
+.icon-calendar,
+.icon-guest,
+.icon-calendar::before,
+.icon-guest::before{
+  color: var(--apra-blue) !important;
+  fill: var(--apra-blue) !important;
+}
+
+/* ================= BUTTON ================= */
+
+.s-btn--primary{
   background: var(--apra-blue) !important;
   color: var(--apra-cream) !important;
   border: 1px solid var(--apra-blue) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  height: var(--apra-field-h-desktop) !important;
+  min-height: var(--apra-field-h-desktop) !important;
+  line-height: var(--apra-field-h-desktop) !important;
+
   font-weight: 600 !important;
-  transition: background var(--apra-transition), border-color var(--apra-transition), transform var(--apra-transition) !important;
+  text-transform: uppercase !important;
 }
 
 .s-btn--primary:hover{
@@ -107,151 +106,56 @@ button[type="submit"].s-btn--primary{
   border-color: var(--apra-hover) !important;
 }
 
-.s-btn--primary:active{
-  transform: translateY(1px);
-}
+/* ================= CALENDAR (jQuery UI) ================= */
 
-/* =========================================================
-   ICONS (your HTML uses spans: .icon-calendar, .icon-guest)
-   Many icon fonts render via ::before
-   ========================================================= */
-
-.icon-calendar,
-.icon-guest{
-  color: var(--apra-blue) !important;
-}
-
-.icon-calendar::before,
-.icon-guest::before{
-  color: var(--apra-blue) !important;
-}
-
-/* Small spacing between icon and text */
-.b-select-ghost .icon-calendar,
-.b-select-ghost .icon-guest{
-  margin-right: 10px !important;
-}
-
-/* =========================================================
-   CALENDAR (jQuery UI)
-   ========================================================= */
-
-.ui-datepicker,
-.ui-datepicker *{
-  border-radius: var(--apra-radius) !important;
+.ui-datepicker{
+  border: 1px solid var(--apra-blue) !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
 }
 
-.ui-datepicker{
-  border: var(--apra-border) !important;
-  background: #ffffff !important;
-}
-
-.ui-datepicker .ui-datepicker-header{
+.ui-datepicker-header{
   background: var(--apra-blue) !important;
   border: none !important;
+  border-radius: 0 !important;
   color: var(--apra-cream) !important;
 }
 
-.ui-datepicker .ui-datepicker-title,
-.ui-datepicker .ui-datepicker-prev,
-.ui-datepicker .ui-datepicker-next{
-  color: var(--apra-cream) !important;
-}
-
-.ui-datepicker td a.ui-state-active{
-  background: var(--apra-active-bg) !important;
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active{
+  background: transparent !important;
   border: 1px solid var(--apra-blue) !important;
   color: var(--apra-blue) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
-.ui-datepicker td a.ui-state-hover{
-  background: var(--apra-hover) !important;
-  color: var(--apra-cream) !important;
-  border: 1px solid var(--apra-hover) !important;
-}
+/* ================= POPUPS ================= */
 
-/* =========================================================
-   GUESTS POPUP (best-effort)
-   ========================================================= */
-
-.l-popup-container--rooms,
-.l-popup-container--rooms .l-popup,
-.l-popup-container--rooms .l-popup__content,
-[class*="popup"][class*="rooms"],
-[class*="popup"][class*="guests"]{
+.l-popup-container--rooms{
   background: #ffffff !important;
-  border: var(--apra-border) !important;
+  border: 1px solid var(--apra-blue) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
-/* =========================================================
-   RESPONSIVE (inside iframe)
-   Note: no "outer page padding" here — iframe can't pad the parent page.
-   We pad the widget content itself.
-   ========================================================= */
+/* ================= MOBILE ================= */
 
-@media (max-width: 980px){
+@media screen and (max-width: 500px){
   .b-start{
-    padding: var(--apra-pad-mobile) !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 
-  .b-select-ghost{
+  .b-select-ghost,
+  .s-btn--primary{
     height: var(--apra-field-h-mobile) !important;
-  }
-}
-
-/* If their layout is grid/flex, enforce one-column on small screens */
-@media (max-width: 640px){
-  .b-start__filter-field{
-    display: block !important;
+    min-height: var(--apra-field-h-mobile) !important;
+    line-height: var(--apra-field-h-mobile) !important;
   }
 
-  .b-start__field{
+  .s-btn--primary{
     width: 100% !important;
   }
-
-  .b-start__submit-field,
-  .b-start__submit-field .s-btn--primary{
-    width: 100% !important;
-    display: block !important;
-  }
-}
-/* ==== HARD OVERRIDE TEST (startWidget) ==== */
-
-/* Видим, что CSS применился: делаем кнопку синей, поля с синей рамкой */
-.b-start .s-btn--primary{
-  background:#031D56 !important;
-  border:1px solid #031D56 !important;
-  color:#F5F3E6 !important;
-  font-weight:600 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-}
-
-/* Самые “поля” — это .b-select-ghost */
-.b-start .b-select-ghost{
-  background:#FFFFFF !important;
-  border:1px solid #031D56 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-
-  height:52px !important;
-  display:flex !important;
-  align-items:center !important;
-  padding:0 16px !important;
-}
-
-/* Текст в поле */
-.b-start .b-select-ghost-content{
-  color:#031D56 !important;
-  font-size:16px !important;
-  font-weight:400 !important;
-}
-
-/* Иконки */
-.b-start .icon-calendar,
-.b-start .icon-guest,
-.b-start .icon-calendar::before,
-.b-start .icon-guest::before{
-  color:#031D56 !important;
 }
