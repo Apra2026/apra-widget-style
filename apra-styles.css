@@ -1,6 +1,7 @@
 /* =========================================================
    APRA HOTEL — OnlineWidget 2.0
    Style: Premium / Minimal / Strict / No Radius / No Shadow
+   IMPORTANT: This CSS is loaded INSIDE the widget iframe.
    ========================================================= */
 
 :root{
@@ -25,92 +26,79 @@
 }
 
 /* =========================================================
-   GLOBAL RESET
+   GLOBAL RESET (inside iframe)
    ========================================================= */
 
-#start-widget *,
-.room-booking *{
+*, *::before, *::after{
   border-radius: var(--apra-radius) !important;
   box-shadow: none !important;
 }
 
 /* =========================================================
-   1–2) CONTAINER (FORM BOX)
+   START WIDGET: CONTAINER
    ========================================================= */
 
-#start-widget .b-start,
-.room-booking{
+.b-start{
   background: transparent !important;
   border: none !important;
-}
-
-#start-widget .b-start{
   padding: var(--apra-pad-desktop) !important;
 }
 
 /* =========================================================
-   3) FIELDS (DATES / GUESTS)
+   START WIDGET: FIELDS (dates / guests)
+   Note: in your HTML fields are .b-select-ghost, not inputs.
    ========================================================= */
 
-#start-widget .b-start__field,
-#start-widget .b-start__field input,
-#start-widget .b-start__field select,
-#start-widget .select2-container .select2-selection,
-.room-booking input,
-.room-booking select,
-.room-booking .select2-container .select2-selection{
+.b-start__field{
+  min-height: var(--apra-field-h-desktop) !important;
+}
+
+/* Clickable "ghost" controls (date/guests) */
+.b-select-ghost{
   background: var(--apra-field-bg) !important;
   border: var(--apra-border) !important;
   color: var(--apra-blue) !important;
-  box-shadow: none !important;
+  height: var(--apra-field-h-desktop) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 16px !important;
   transition: border-color var(--apra-transition), background var(--apra-transition) !important;
 }
 
-/* Field height desktop */
-#start-widget .b-start__field,
-#start-widget .b-start__field input,
-#start-widget .select2-container .select2-selection{
-  height: var(--apra-field-h-desktop) !important;
-}
-
-/* Text inside fields */
-#start-widget .b-start__field input,
-#start-widget .select2-container .select2-selection__rendered,
-.room-booking input,
-.room-booking .select2-container .select2-selection__rendered{
+/* Text inside the ghost control */
+.b-select-ghost-content{
   font-size: 16px !important;
   font-weight: 400 !important;
+  color: var(--apra-blue) !important;
 }
 
-/* Placeholder */
-#start-widget input::placeholder,
-.room-booking input::placeholder{
+/* When empty (often they add a placeholder class; best-effort) */
+.b-select-ghost-content:empty,
+.b-select-ghost-content.is-empty,
+.b-select-ghost.is-empty .b-select-ghost-content{
   color: var(--apra-gray) !important;
-  opacity: 1 !important;
 }
 
 /* =========================================================
-   4) LABELS
+   LABELS
    ========================================================= */
 
-#start-widget .b-start__field-label,
-.room-booking .b-start__field-label,
-.room-booking label{
+.b-start__field-label{
   color: var(--apra-cream) !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.02em !important;
+  margin-bottom: 6px !important;
 }
 
 /* =========================================================
-   5) PRIMARY BUTTON
+   PRIMARY BUTTON
    ========================================================= */
 
-#start-widget .s-btn--primary,
-.room-booking .s-btn--primary,
-.room-booking button[type="submit"],
-.room-booking a.s-btn--primary{
+.s-btn--primary,
+button.s-btn--primary,
+button[type="submit"].s-btn--primary{
   background: var(--apra-blue) !important;
   color: var(--apra-cream) !important;
   border: 1px solid var(--apra-blue) !important;
@@ -118,36 +106,38 @@
   transition: background var(--apra-transition), border-color var(--apra-transition), transform var(--apra-transition) !important;
 }
 
-#start-widget .s-btn--primary:hover,
-.room-booking .s-btn--primary:hover,
-.room-booking button[type="submit"]:hover,
-.room-booking a.s-btn--primary:hover{
+.s-btn--primary:hover{
   background: var(--apra-hover) !important;
   border-color: var(--apra-hover) !important;
 }
 
-#start-widget .s-btn--primary:active,
-.room-booking .s-btn--primary:active{
+.s-btn--primary:active{
   transform: translateY(1px);
 }
 
 /* =========================================================
-   6) ICONS
+   ICONS (your HTML uses spans: .icon-calendar, .icon-guest)
+   Many icon fonts render via ::before
    ========================================================= */
 
-#start-widget svg,
-#start-widget .b-start__field svg,
-#start-widget .b-start__field i,
-#start-widget .b-start__field [class*="icon"],
-.room-booking svg,
-.room-booking [class*="icon"]{
+.icon-calendar,
+.icon-guest{
   color: var(--apra-blue) !important;
-  fill: var(--apra-blue) !important;
-  stroke: var(--apra-blue) !important;
+}
+
+.icon-calendar::before,
+.icon-guest::before{
+  color: var(--apra-blue) !important;
+}
+
+/* Small spacing between icon and text */
+.b-select-ghost .icon-calendar,
+.b-select-ghost .icon-guest{
+  margin-right: 10px !important;
 }
 
 /* =========================================================
-   7) CALENDAR (jQuery UI)
+   CALENDAR (jQuery UI)
    ========================================================= */
 
 .ui-datepicker,
@@ -173,14 +163,12 @@
   color: var(--apra-cream) !important;
 }
 
-/* Active date */
 .ui-datepicker td a.ui-state-active{
   background: var(--apra-active-bg) !important;
   border: 1px solid var(--apra-blue) !important;
   color: var(--apra-blue) !important;
 }
 
-/* Hover date */
 .ui-datepicker td a.ui-state-hover{
   background: var(--apra-hover) !important;
   color: var(--apra-cream) !important;
@@ -188,7 +176,7 @@
 }
 
 /* =========================================================
-   8) GUESTS POPUP
+   GUESTS POPUP (best-effort)
    ========================================================= */
 
 .l-popup-container--rooms,
@@ -200,64 +188,34 @@
   border: var(--apra-border) !important;
 }
 
-.l-popup-container--rooms button,
-.l-popup-container--rooms [class*="btn"],
-.l-popup-container--rooms [class*="counter"] button{
-  color: var(--apra-blue) !important;
-}
-
 /* =========================================================
-   9) BOOKWIDGET ROOM CARDS
-   ========================================================= */
-
-.room-booking [class*="room-card"],
-.room-booking [class*="room__item"],
-.room-booking [class*="rate-card"],
-.room-booking [class*="tariff"]{
-  border: var(--apra-border) !important;
-  background: transparent !important;
-}
-
-.room-booking [class*="price"],
-.room-booking [class*="cost"]{
-  color: var(--apra-blue) !important;
-  font-size: 18px !important;
-}
-
-/* =========================================================
-   10) RESPONSIVE
+   RESPONSIVE (inside iframe)
+   Note: no "outer page padding" here — iframe can't pad the parent page.
+   We pad the widget content itself.
    ========================================================= */
 
 @media (max-width: 980px){
-
-  #start-widget .b-start{
+  .b-start{
     padding: var(--apra-pad-mobile) !important;
   }
 
-  #start-widget .b-start__field,
-  #start-widget .b-start__field input,
-  #start-widget .select2-container .select2-selection{
+  .b-select-ghost{
     height: var(--apra-field-h-mobile) !important;
   }
+}
 
-  /* outer side margins */
-  #start-widget{
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* single column */
-  #start-widget .b-start__row,
-  #start-widget .b-start__fields,
-  #start-widget .b-start__grid{
+/* If their layout is grid/flex, enforce one-column on small screens */
+@media (max-width: 640px){
+  .b-start__filter-field{
     display: block !important;
   }
 
-  /* full width button */
-  #start-widget .s-btn--primary,
-  .room-booking .s-btn--primary,
-  .room-booking button[type="submit"]{
+  .b-start__field{
+    width: 100% !important;
+  }
+
+  .b-start__submit-field,
+  .b-start__submit-field .s-btn--primary{
     width: 100% !important;
     display: block !important;
   }
