@@ -159,3 +159,17 @@
     width: 100% !important;
   }
 }
+/* ===== TEXT CASE FIX ===== */
+.b-start__field-label{
+  text-transform: none !important;
+}
+
+.s-btn--primary{
+  text-transform: none !important;
+}
+
+/* подписи возле полей (на всякий) */
+.b-start__field,
+.b-start__field *{
+  text-transform: none !important;
+}
