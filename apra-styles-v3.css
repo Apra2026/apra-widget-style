@@ -240,3 +240,59 @@
   background: var(--apra-hover) !important;
   border-color: var(--apra-hover) !important;
 }
+/* =========================================================
+   BOOK WIDGET — фон секций и текст фильтров
+   ========================================================= */
+
+/* Фон секций фильтров — белый */
+.room-booking .b-filter,
+.room-booking .b-filter__field,
+.room-booking .l-filters,
+.room-booking .l-filters__content,
+.room-booking .l-sidebar {
+  background: #FFFFFF !important;
+}
+
+/* Заголовки секций (Номер, Параметры, Удобства, Тариф) */
+.room-booking .b-filter__title {
+  color: var(--apra-blue) !important;
+}
+
+/* Подписи полей (Заезд, Выезд, Язык, Валюта) */
+.room-booking .b-filter__field-label {
+  color: var(--apra-blue) !important;
+}
+
+/* Чекбоксы — текст удобств и опций тарифа */
+.room-booking .b-checkbox label,
+.room-booking .b-checkbox label span,
+.room-booking .b-filter__field label,
+.room-booking .b-filter__field label span {
+  color: var(--apra-blue) !important;
+}
+
+/* Ссылка промокода */
+.room-booking .promocode-block a,
+.room-booking .promocode-block a span {
+  color: var(--apra-blue) !important;
+}
+
+/* Select2 — обводка и фон для дропдаунов (Язык, Тариф) */
+.room-booking .select2-container .select2-selection--single {
+  background: #FFFFFF !important;
+  border: 1px solid var(--apra-blue) !important;
+  border-radius: 0 !important;
+}
+
+.room-booking .select2-selection__rendered {
+  color: var(--apra-blue) !important;
+}
+
+.room-booking .select2-selection__arrow b {
+  border-color: var(--apra-blue) transparent transparent transparent !important;
+}
+
+/* Счётчик количества ночей */
+.room-booking .periodLength {
+  color: var(--apra-blue) !important;
+}
